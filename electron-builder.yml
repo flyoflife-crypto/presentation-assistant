@@ -1,0 +1,21 @@
+appId: com.presentationassistant.pro
+productName: Presentation Assistant Pro
+copyright: Copyright © 2024
+directories:
+  output: release
+  buildResources: assets
+files:
+  - dist/**/*
+  - package.json
+mac:
+  category: public.app-category.productivity
+  target:
+    - target: default
+      arch:
+        - arm64
+        - x64
+  icon: assets/icon.png
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
