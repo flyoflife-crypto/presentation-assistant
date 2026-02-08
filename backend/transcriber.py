@@ -46,8 +46,10 @@ class Transcriber:
         self._lock = threading.Lock()
         self._audio_buf = bytearray()
 
-        # Ring buffer of transcribed text segments
-        self._segments: collections.deque[str] = collections.deque(maxlen=50)
+        # Ring buffer of transcribed text segments — sized to hold roughly
+        # buffer_seconds worth of transcription at the current interval.
+        max_segments = max(10, int(buffer_seconds / transcribe_interval) + 5)
+        self._segments: collections.deque[str] = collections.deque(maxlen=max_segments)
 
         self._running = threading.Event()
         self._thread: Optional[threading.Thread] = None
