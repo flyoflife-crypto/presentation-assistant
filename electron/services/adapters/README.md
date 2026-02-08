@@ -199,4 +199,4 @@ eventBus.on('app:error', (data) => {
 2. **Handle errors**: Listen to `app:error` events to handle adapter errors
 3. **Clipboard monitoring indicator**: Show UI indicator when clipboard monitoring is active
 4. **File validation**: Ensure file exists before configuring FileTailAdapter
-5. **Poll interval**: Keep clipboard poll interval >= 100ms to avoid excessive CPU usage
+5. **Poll interval**: Keep clipboard poll interval >= 100ms to avoid excessive CPU usage. Lower intervals increase CPU overhead due to frequent clipboard API calls and event processing. The 100ms minimum provides a good balance between responsiveness and system resource usage. For typical presentation scenarios, 500-1000ms intervals are recommended.
