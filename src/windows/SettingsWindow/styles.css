@@ -1,0 +1,233 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  overflow: hidden;
+}
+
+.settings-window {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Header */
+.settings-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-background);
+}
+
+.settings-header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Tabs */
+.settings-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-background-secondary);
+  padding: 0 20px;
+  overflow-x: auto;
+}
+
+.tab-button {
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  white-space: nowrap;
+}
+
+.tab-button:hover {
+  color: var(--color-text);
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.tab-button.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Content */
+.settings-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.tab-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Footer */
+.settings-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-background);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-left,
+.footer-right {
+  display: flex;
+  gap: 8px;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--color-text);
+}
+
+.form-group-description {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Section Headers */
+.section-header {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 24px 0 16px 0;
+  color: var(--color-text);
+}
+
+.section-header:first-child {
+  margin-top: 0;
+}
+
+/* Status Messages */
+.status-message {
+  padding: 10px 12px;
+  border-radius: var(--border-radius);
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.status-message.success {
+  background-color: rgba(52, 199, 89, 0.1);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.status-message.error {
+  background-color: rgba(255, 59, 48, 0.1);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
+}
+
+.status-message.info {
+  background-color: rgba(0, 122, 255, 0.1);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+/* Input Groups */
+.input-with-button {
+  display: flex;
+  gap: 8px;
+}
+
+.input-with-button input {
+  flex: 1;
+  font-family: var(--font-family);
+  font-size: 13px;
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  outline: none;
+  transition: border-color var(--transition-speed) ease;
+}
+
+.input-with-button input:focus {
+  border-color: var(--color-primary);
+}
+
+.input-with-button input:disabled {
+  background-color: var(--color-background-secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Range Input */
+.range-input {
+  width: 100%;
+  margin: 8px 0;
+}
+
+.range-value {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text);
+  min-width: 40px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  border-top-color: var(--color-primary);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Placeholder Content */
+.placeholder-content {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.placeholder-content h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.placeholder-content p {
+  font-size: 13px;
+  line-height: 1.5;
+}

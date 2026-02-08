@@ -1,0 +1,52 @@
+# Presentation Assistant — Interview Helper Configuration
+
+# Audio capture settings
+audio:
+  # PyAudio device index (null = default system microphone)
+  # Use `python -m backend.audio_capture --list` to see available devices
+  device_index: null
+  sample_rate: 16000
+  channels: 1
+  chunk_size: 1024        # frames per buffer read
+  format: "int16"         # paInt16
+
+# Speech-to-Text (whisper.cpp) settings
+whisper:
+  # Path to the whisper.cpp compiled binary (e.g. ./whisper.cpp/main)
+  binary_path: "whisper-cpp"
+  # Path to the GGML model file
+  model_path: "models/ggml-base.en.bin"
+  language: "en"
+  # Ring-buffer duration in seconds for dialog context
+  buffer_seconds: 20
+
+# LLM settings (Ollama)
+ollama:
+  base_url: "http://localhost:11434"
+  model: "llama3.2:3b"
+  # System prompt sent with every request
+  system_prompt: >
+    You are an assistant during a technical interview.
+    You receive a dialog transcript.
+    Your task: briefly analyze the interviewer's last question and generate
+    1-2 key talking points for an answer, a code example, or a clarifying question.
+    Be as concise as possible.
+  # Maximum tokens in response
+  max_tokens: 256
+  # Temperature for generation
+  temperature: 0.3
+
+# WebSocket server (backend -> frontend)
+websocket:
+  host: "127.0.0.1"
+  port: 8765
+
+# Electron overlay window
+window:
+  width: 420
+  height: 320
+  opacity: 0.92
+  always_on_top: true
+
+# Global hotkey to toggle overlay visibility
+hotkey: "CmdOrCtrl+Shift+H"

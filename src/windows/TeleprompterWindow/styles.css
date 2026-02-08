@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.teleprompter-window {
+  background-color: transparent;
+}
+
+/* Hint Container */
+.hint-container {
+  font-family: var(--font-family);
+  font-weight: 500;
+  line-height: 1.4;
+  word-wrap: break-word;
+  transition: opacity 1s ease;
+}
+
+.hint-container.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.hint-container.fade-out {
+  animation: fadeOut 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Watermark */
+.watermark {
+  font-family: var(--font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
