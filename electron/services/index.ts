@@ -33,3 +33,6 @@ export type { TriggerContext, TriggerAnalysis, PolicyConfig } from './CoachPolic
 
 export { SessionOrchestrator, sessionOrchestrator } from './SessionOrchestrator';
 export type { SessionConfig as OrchestratorSessionConfig, StateTransition, CancellationToken } from './SessionOrchestrator';
+
+export { AppLifecycle, appLifecycle } from './AppLifecycle';
+export type { WindowType } from './AppLifecycle';
