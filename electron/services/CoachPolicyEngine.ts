@@ -248,7 +248,7 @@ export class CoachPolicyEngine {
       'that', 'this', 'with', 'from', 'have', 'been', 'will', 'your', 'more',
       'which', 'their', 'there', 'would', 'about', 'could', 'should',
       'что', 'это', 'как', 'для', 'все', 'был', 'или', 'они', 'вас',
-      'был', 'так', 'его', 'но', 'да', 'ты', 'к', 'за', 'на', 'по'
+      'так', 'его', 'но', 'да', 'ты', 'к', 'за', 'на', 'по'
     ]);
 
     const words = text.toLowerCase()
