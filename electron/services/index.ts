@@ -12,3 +12,9 @@ export type { Message, ContextMetrics } from './ContextStore';
 
 export { HintComposer, hintComposer } from './HintComposer';
 export type { HintConfig, ComposedHint, RawHint } from './HintComposer';
+
+export { ResponsesCoachService, responsesCoachService } from './ResponsesCoachService';
+export type { SessionConfig } from './ResponsesCoachService';
+
+export { RealtimeTranscriptionService, realtimeTranscriptionService } from './RealtimeTranscriptionService';
+export type { TranscriptSegment, RealtimeConfig } from './RealtimeTranscriptionService';
