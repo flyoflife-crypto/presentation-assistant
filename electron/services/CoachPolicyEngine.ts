@@ -34,6 +34,7 @@ export class CoachPolicyEngine {
   private lastHintTime: number = 0;
   private triggerCount: number = 0;
   private recentKeywords: Set<string> = new Set();
+  private fillerWordRegexes: Map<string, RegExp>;
 
   // Russian question words and patterns
   private readonly ruQuestionWords = [
@@ -67,6 +68,14 @@ export class CoachPolicyEngine {
       questionConfidenceThreshold: config.questionConfidenceThreshold ?? 0.6,
       topicDriftThreshold: config.topicDriftThreshold ?? 0.3,
     };
+
+    // Pre-compile regex patterns for filler words
+    this.fillerWordRegexes = new Map();
+    for (const filler of this.fillerWords) {
+      // Escape special regex characters
+      const escaped = filler.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      this.fillerWordRegexes.set(filler, new RegExp(`\\b${escaped}\\b`, 'gi'));
+    }
   }
 
   /**
@@ -190,13 +199,14 @@ export class CoachPolicyEngine {
   }
 
   /**
-   * Count filler words in text
+   * Count filler words in text using pre-compiled regexes
    */
   private countFillerWords(lowerText: string): number {
     let count = 0;
 
-    for (const filler of this.fillerWords) {
-      const regex = new RegExp(`\\b${filler}\\b`, 'gi');
+    for (const regex of this.fillerWordRegexes.values()) {
+      // Reset regex state before each use
+      regex.lastIndex = 0;
       const matches = lowerText.match(regex);
       if (matches) {
         count += matches.length;

@@ -138,20 +138,20 @@ export class RoomMicAudioPipeline {
 
     const { isSpeech, confidence } = vadData;
 
-    // Detect speech end
+    // Detect speech end (check previous state before updating)
     if (this.lastVADState && !isSpeech && this.config.commitOnVADEnd) {
       // Speech ended, commit buffered audio
       this.commitBufferedAudio();
       console.log(`[RoomMicAudioPipeline] Speech ended (confidence: ${confidence.toFixed(2)}), audio committed`);
     }
 
-    // Update state
-    this.lastVADState = isSpeech;
-
-    // Log significant VAD changes
+    // Log speech start
     if (isSpeech && !this.lastVADState) {
       console.log(`[RoomMicAudioPipeline] Speech detected (confidence: ${confidence.toFixed(2)})`);
     }
+
+    // Update state after processing
+    this.lastVADState = isSpeech;
   }
 
   /**

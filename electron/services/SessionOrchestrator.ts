@@ -382,7 +382,11 @@ export class SessionOrchestrator {
       }
 
       // Emit state change event
-      eventBus.emit('app:ready', undefined); // Using existing event; ideally would have session:state-changed
+      eventBus.emit('session:state-changed', {
+        state: targetState,
+        mode: this.currentMode ?? undefined,
+        timestamp: transition.timestamp,
+      });
 
       console.log(`[SessionOrchestrator] State transition: ${transition.from} -> ${transition.to}${reason ? ` (${reason})` : ''}`);
     } finally {

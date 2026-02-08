@@ -31,6 +31,9 @@ export interface EventMap {
   // Clipboard events
   'clipboard:monitoring': { active: boolean };
 
+  // Session events
+  'session:state-changed': { state: string; mode?: string; timestamp: number };
+
   // AI events
   'ai:request': { endpoint: string };
   'ai:response': { endpoint: string; tokens?: number };
