@@ -69,10 +69,6 @@ const config: Configuration = {
       chunks: ['roomMicCapture'],
     }),
   ],
-  devServer: {
-    port: 3000,
-    hot: true,
-  },
-};
+} as Configuration;
 
 export default config;
