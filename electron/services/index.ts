@@ -18,3 +18,9 @@ export type { SessionConfig } from './ResponsesCoachService';
 
 export { RealtimeTranscriptionService, realtimeTranscriptionService } from './RealtimeTranscriptionService';
 export type { TranscriptSegment, RealtimeConfig } from './RealtimeTranscriptionService';
+
+export { CaptionIngestService, captionIngestService } from './CaptionIngestService';
+export type { CaptionAdapter, CaptionAdapterType, CaptionAdapterConfig } from './adapters/CaptionAdapter';
+export { ManualPasteAdapter } from './adapters/ManualPasteAdapter';
+export { FileTailAdapter } from './adapters/FileTailAdapter';
+export { ClipboardAdapter } from './adapters/ClipboardAdapter';

@@ -24,6 +24,13 @@ export interface EventMap {
   'audio:stopped': void;
   'audio:transcription': { text: string; isFinal: boolean };
 
+  // Caption events
+  'caption:ingested': { text: string; source: string; timestamp: number };
+  'caption:adapter-changed': { type: string; config: any };
+
+  // Clipboard events
+  'clipboard:monitoring': { active: boolean };
+
   // AI events
   'ai:request': { endpoint: string };
   'ai:response': { endpoint: string; tokens?: number };
