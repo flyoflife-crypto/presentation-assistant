@@ -2,8 +2,7 @@ import ElectronStore = require('electron-store');
 import { eventBus } from './EventBus';
 
 export interface AppConfig {
-  // API Configuration
-  openRouterApiKey?: string;
+  // API Configuration (note: API keys stored in SecretStore, not here)
   selectedModel?: string;
   maxTokens?: number;
   temperature?: number;

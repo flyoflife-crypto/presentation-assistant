@@ -116,8 +116,8 @@ class HintComposer {
       return text;
     }
 
-    // Make it actionable by prefixing with "Try:"
-    return `Try: ${text.charAt(0).toLowerCase() + text.slice(1)}`;
+    // Make it actionable by prefixing with "Try:" - preserve original casing
+    return `Try: ${text}`;
   }
 
   /**
