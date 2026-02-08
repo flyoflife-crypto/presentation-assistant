@@ -36,3 +36,15 @@ temp/
 
 # Electron
 out/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+venv/
+.venv/
+
+# Whisper models
+models/
