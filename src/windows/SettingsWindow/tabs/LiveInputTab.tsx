@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Select, Toggle } from '../../../shared/ui';
+import { Select } from '../../../shared/ui';
 
 interface LiveInputTabProps {
   config: Record<string, any>;
@@ -74,18 +74,28 @@ export const LiveInputTab: React.FC<LiveInputTabProps> = ({ config, onConfigChan
       <div className="form-group">
         <label>Live Input Mode</label>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <Toggle
-            checked={liveInputMode === 'CAPTIONS'}
-            onChange={(checked) => onConfigChange('liveInputMode', checked ? 'CAPTIONS' : 'ROOM_MIC')}
-            label="Captions Mode"
-            ariaLabel="Toggle captions mode"
-          />
-          <Toggle
-            checked={liveInputMode === 'ROOM_MIC'}
-            onChange={(checked) => onConfigChange('liveInputMode', checked ? 'ROOM_MIC' : 'CAPTIONS')}
-            label="Room Microphone Mode"
-            ariaLabel="Toggle room microphone mode"
-          />
+          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+            <input
+              type="radio"
+              name="liveInputMode"
+              value="CAPTIONS"
+              checked={liveInputMode === 'CAPTIONS'}
+              onChange={() => onConfigChange('liveInputMode', 'CAPTIONS')}
+              style={{ cursor: 'pointer' }}
+            />
+            <span style={{ fontSize: '13px' }}>Captions Mode</span>
+          </label>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+            <input
+              type="radio"
+              name="liveInputMode"
+              value="ROOM_MIC"
+              checked={liveInputMode === 'ROOM_MIC'}
+              onChange={() => onConfigChange('liveInputMode', 'ROOM_MIC')}
+              style={{ cursor: 'pointer' }}
+            />
+            <span style={{ fontSize: '13px' }}>Room Microphone Mode</span>
+          </label>
         </div>
         <p className="form-group-description">
           {liveInputMode === 'CAPTIONS'
