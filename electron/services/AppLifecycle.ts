@@ -9,6 +9,7 @@ import {
 } from 'electron';
 import path from 'path';
 import { eventBus } from './EventBus';
+import { SessionState, LiveInputMode } from '../ipc/contracts';
 
 /**
  * Window types supported by the application
@@ -46,6 +47,7 @@ class AppLifecycle {
   private windows: Map<WindowType, BrowserWindow>;
   private tray: Tray | null;
   private preloadPath: string;
+  private rendererPath: string;
   private appState: AppState;
   private isQuitting: boolean;
 
@@ -53,6 +55,7 @@ class AppLifecycle {
     this.windows = new Map();
     this.tray = null;
     this.preloadPath = path.join(__dirname, '../preload.js');
+    this.rendererPath = path.join(__dirname, '../../dist/renderer');
     this.appState = {
       captionIngestActive: false,
       roomMicActive: false,
@@ -282,14 +285,14 @@ class AppLifecycle {
 
     // Listen for session state changes
     eventBus.on('session:state-changed', ({ state, mode }) => {
-      if (state === 'Idle' || state === 'Stopping') {
+      if (state === SessionState.IDLE || state === SessionState.STOPPING) {
         this.appState.captionIngestActive = false;
         this.appState.roomMicActive = false;
         this.appState.teleprompterActive = false;
-      } else if (state === 'Live') {
-        if (mode === 'CAPTIONS') {
+      } else if (state === SessionState.LIVE) {
+        if (mode === LiveInputMode.CAPTIONS) {
           this.appState.captionIngestActive = true;
-        } else if (mode === 'ROOM_MIC') {
+        } else if (mode === LiveInputMode.ROOM_MIC) {
           this.appState.roomMicActive = true;
         }
       }
@@ -523,7 +526,7 @@ class AppLifecycle {
     this.windows.set(type, window);
 
     // Load HTML file
-    const htmlPath = path.join(__dirname, '../../dist/renderer', htmlFile);
+    const htmlPath = path.join(this.rendererPath, htmlFile);
     window.loadFile(htmlPath).catch(err => {
       console.error(`[AppLifecycle] Failed to load ${htmlFile}:`, err);
       eventBus.emit('app:error', { error: err, context: `Loading ${htmlFile}` });
