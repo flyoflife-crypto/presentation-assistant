@@ -24,3 +24,12 @@ export type { CaptionAdapter, CaptionAdapterType, CaptionAdapterConfig } from '.
 export { ManualPasteAdapter } from './adapters/ManualPasteAdapter';
 export { FileTailAdapter } from './adapters/FileTailAdapter';
 export { ClipboardAdapter } from './adapters/ClipboardAdapter';
+
+export { RoomMicAudioPipeline, roomMicAudioPipeline } from './RoomMicAudioPipeline';
+export type { AudioChunkData, VADData, AudioPipelineConfig } from './RoomMicAudioPipeline';
+
+export { CoachPolicyEngine, coachPolicyEngine } from './CoachPolicyEngine';
+export type { TriggerContext, TriggerAnalysis, PolicyConfig } from './CoachPolicyEngine';
+
+export { SessionOrchestrator, sessionOrchestrator } from './SessionOrchestrator';
+export type { SessionConfig as OrchestratorSessionConfig, StateTransition, CancellationToken } from './SessionOrchestrator';
